@@ -5,8 +5,9 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <main>
-      <h1 className='text-red-500'>hello</h1>
+    <main className='h-screen'>
+      {/* textToSpeech */}
+      {/* ChatBotCanvas */}
     </main>
   )
 }
