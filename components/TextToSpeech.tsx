@@ -7,6 +7,13 @@ export const TextToSpeech = () => {
     const [userText, setUserText] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
+    const synth = typeof window !== "undefined" ? window.speechSynthesis : null;
+	const voices = synth?.getVoices();
+    console.log(voices);
+
+    const selectedVoice = voices?.find((voice) => voice.name === "Microsoft David - English (United States)");
+    console.log(selectedVoice);
+
     const handleUserText = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(userText);
