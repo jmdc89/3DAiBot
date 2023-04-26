@@ -1,10 +1,18 @@
-import React from 'react'
+'use client'
+
+import React, {useState} from 'react'
 
 export const TextToSpeech = () => {
+
+    const [userText, setUserText] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+
   return (
     <div className='flex justify-center top-0 z-50'>
         <form className='flex fixed mx-auto bottom-2 space-x-2 pt-2'>
             <input
+                value={userText}
+                onChange={(e) => setUserText(e.target.value)}
                 className='bg-transparent w-[300px] sm:w-[500px] xs:w-[250px] border border-[#b00c3f]/80 outline-none rounded-lg placeholder:text-[#b00c3f] p-2 text-[#b00c3f]'
                 type="text"
                 placeholder="What do you want to know..."
