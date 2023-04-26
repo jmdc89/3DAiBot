@@ -1,15 +1,22 @@
 'use client'
 
-import React, {useState} from 'react'
+import React, {FormEvent, useState} from 'react'
 
 export const TextToSpeech = () => {
 
     const [userText, setUserText] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
+    const handleUserText = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(userText);
+    }
+
   return (
     <div className='flex justify-center top-0 z-50'>
-        <form className='flex fixed mx-auto bottom-2 space-x-2 pt-2'>
+        <form 
+        onSubmit={handleUserText}
+        className='flex fixed mx-auto bottom-2 space-x-2 pt-2'>
             <input
                 value={userText}
                 onChange={(e) => setUserText(e.target.value)}
