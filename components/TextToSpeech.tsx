@@ -14,6 +14,18 @@ export const TextToSpeech = () => {
     const selectedVoice = voices?.find((voice) => voice.name === "Microsoft David - English (United States)");
     console.log(selectedVoice);
 
+    const speak = (textToSpeak: string) => {
+		const utterance = new SpeechSynthesisUtterance(textToSpeak);
+		utterance.rate = 0.2;
+		utterance.voice = selectedVoice!;
+
+		synth?.speak(utterance);
+		setIsPlaying(true);
+		utterance.onend = () => {
+			setIsPlaying(false);
+		};
+	};
+
     const handleUserText = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(userText);
