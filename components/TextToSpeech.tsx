@@ -11,13 +11,13 @@ export const TextToSpeech = () => {
 	const voices = synth?.getVoices();
     console.log(voices);
 
-    const selectedVoice = voices?.find((voice) => voice.name === "Microsoft David - English (United States)");
+    const selectedVoice = voices?.find((voice) => voice.name === "Microsoft Mark- English (United States)");
     console.log(selectedVoice);
 
     const speak = (textToSpeak: string) => {
 		const utterance = new SpeechSynthesisUtterance(textToSpeak);
 		utterance.rate = 0.2;
-		// utterance.voice = selectedVoice!;
+		utterance.voice = selectedVoice!;
 
 		synth?.speak(utterance);
 		// setIsPlaying(true);
