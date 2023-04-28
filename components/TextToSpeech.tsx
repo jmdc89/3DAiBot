@@ -18,12 +18,13 @@ export const TextToSpeech = () => {
 		const utterance = new SpeechSynthesisUtterance(textToSpeak);
 		utterance.rate = 0.2;
 		utterance.voice = selectedVoice!;
+    setIsLoading(true);
 
 		synth?.speak(utterance);
 		// setIsPlaying(true);
-		// utterance.onend = () => {
-		// 	setIsPlaying(false);
-		// };
+		utterance.onend = () => {
+			setIsLoading(false);
+		};
 	};
 
     const handleUserText = (e: FormEvent<HTMLFormElement>) => {
@@ -43,8 +44,11 @@ export const TextToSpeech = () => {
                 type="text"
                 placeholder="What do you want to know..."
             />
-            <button 
-            className='text-[#b00c3f] p-2 border border-[#b00c3f] rounded-lg disabled:text-blue-100 disabled:cursor-not-allowed disabled:bg-gray-500 hover:scale-110 hover:text-black hover:bg-[#b00c3f] duration-300 transition-all'>Ask</button>
+            <button
+            disabled={isLoading}
+            className='text-[#b00c3f] p-2 border border-[#b00c3f] rounded-lg disabled:text-blue-100 disabled:cursor-not-allowed disabled:bg-gray-500 hover:scale-110 hover:text-black hover:bg-[#b00c3f] duration-300 transition-all'>
+              {isLoading ? "thinking..." : "Ask"}
+              </button>
         </form>
     </div>
   )
