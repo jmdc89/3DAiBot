@@ -26,15 +26,15 @@ export const TextToSpeech = () => {
 		// };
 	};
 
-    // const handleUserText = (e: FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault();
-    //     console.log(userText);
-    // }
+    const handleUserText = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        speak(userText)
+    }
 
   return (
     <div className='flex justify-center top-0 z-50'>
         <form 
-        // onSubmit={handleUserText}
+        onSubmit={handleUserText}
         className='flex fixed mx-auto bottom-2 space-x-2 pt-2'>
             <input
                 value={userText}
@@ -44,7 +44,6 @@ export const TextToSpeech = () => {
                 placeholder="What do you want to know..."
             />
             <button 
-            onClick={() => speak(userText)}
             className='text-[#b00c3f] p-2 border border-[#b00c3f] rounded-lg disabled:text-blue-100 disabled:cursor-not-allowed disabled:bg-gray-500 hover:scale-110 hover:text-black hover:bg-[#b00c3f] duration-300 transition-all'>Ask</button>
         </form>
     </div>
