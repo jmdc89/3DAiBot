@@ -37,6 +37,9 @@ export const TextToSpeech = () => {
       let message = "";
       if (error instanceof Error) message = error.message;
       console.log(message);
+    } finally {
+      setIsLoading(false);
+			setUserText("");
     }
 
   };
