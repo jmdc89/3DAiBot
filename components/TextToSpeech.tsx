@@ -27,10 +27,21 @@ export const TextToSpeech = () => {
 		};
 	};
 
-    const handleUserText = (e: FormEvent<HTMLFormElement>) => {
+    const handleUserText = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        speak(userText)
-    }
+        try {
+          const response = await fetch("/api/openai", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({userText}),
+          });
+          const {message} = await response.json();
+          console.log(message)
+        } catch (error) {}
+        // speak(userText)
+    };
 
   return (
     <div className='flex justify-center top-0 z-50'>
