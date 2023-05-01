@@ -4,6 +4,10 @@ import { OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React from 'react'
 
+const Head = () => {
+    return null
+}
+
 const ChatBotCanvas = () => {
     return (
     <Canvas>
@@ -11,6 +15,7 @@ const ChatBotCanvas = () => {
         <mesh>
             <boxGeometry />
         </mesh>
+        <Head />
     </Canvas>
     );
 }
