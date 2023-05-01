@@ -1,9 +1,16 @@
+'use client'
+
+import { Canvas } from '@react-three/fiber'
 import React from 'react'
 
 const ChatBotCanvas = () => {
-  return (
-    <div>ChatBotCanvas</div>
-  )
+    return (
+    <Canvas>
+        <mesh>
+            <boxGeometry />
+        </mesh>
+    </Canvas>
+    );
 }
 
-export default ChatBotCanvas
+export default ChatBotCanvas;
