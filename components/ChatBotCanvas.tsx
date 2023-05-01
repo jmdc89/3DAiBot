@@ -7,16 +7,14 @@ import React from 'react'
 const Head = () => {
     const model = useGLTF("head.glb");
     console.log(model);
-    return null
+    return < primitive object={model.scene} scale={3} />
 }
 
 const ChatBotCanvas = () => {
     return (
     <Canvas>
         <OrbitControls />
-        <mesh>
-            <boxGeometry />
-        </mesh>
+        <ambientLight />
         <Head />
     </Canvas>
     );
