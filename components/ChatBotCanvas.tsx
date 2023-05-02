@@ -4,6 +4,10 @@ import { OrbitControls, useAnimations, useGLTF} from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React, { useEffect } from 'react'
 
+const Torch = () => {
+    return null
+}
+
 const Head = () => {
     const model = useGLTF("head.glb");
     const animations = useAnimations(model.animations, model.scene);
@@ -12,8 +16,14 @@ const Head = () => {
         // action?.play();
     },[action])
 
-    return < primitive object={model.scene} scale={3} />
-}
+    return  (
+        <>
+            < primitive object={model.scene} scale={3} />
+            <Torch />
+        </>
+    );
+    
+};
 
 const ChatBotCanvas = () => {
     return (
