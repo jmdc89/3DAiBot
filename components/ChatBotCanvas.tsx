@@ -13,7 +13,13 @@ const Head = () => {
 const ChatBotCanvas = () => {
     return (
     <Canvas>
-        <OrbitControls />
+        <OrbitControls
+				enableZoom={false}
+				enableDamping
+				maxPolarAngle={2}
+				minAzimuthAngle={-Math.PI * 0.5}
+				maxAzimuthAngle={Math.PI * 0.5}
+			/>
         <ambientLight />
         <Head />
     </Canvas>
