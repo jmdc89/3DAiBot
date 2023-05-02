@@ -1,12 +1,13 @@
 'use client'
 
-import { OrbitControls, useGLTF} from '@react-three/drei'
+import { OrbitControls, useAnimations, useGLTF} from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React from 'react'
 
 const Head = () => {
     const model = useGLTF("head.glb");
-    console.log(model);
+    const animations = useAnimations(model.animations, model.scene);
+	const action = animations.actions.Animation;
     return < primitive object={model.scene} scale={3} />
 }
 
