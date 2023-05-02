@@ -54,7 +54,8 @@ const Head = () => {
     return  (
         <>
             < primitive object={model.scene} scale={3} />
-            <Torch />
+            <Torch color="blue" position={[4,2,1]}/>
+            <Torch color="red" position={[-4,2,1]}/>
         </>
     );
     
