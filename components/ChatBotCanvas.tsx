@@ -17,7 +17,7 @@ const Head = () => {
 
 const ChatBotCanvas = () => {
     return (
-    <Canvas className='z-0'>
+        <Canvas style={{ pointerEvents: 'none' }}>
         <OrbitControls
 				enableZoom={false}
 				enableDamping
@@ -25,7 +25,7 @@ const ChatBotCanvas = () => {
 				minAzimuthAngle={-Math.PI * 0.5}
 				maxAzimuthAngle={Math.PI * 0.5}
 			/>
-        <ambientLight />
+        <ambientLight intensity={0.015} />
         <Head />
     </Canvas>
     );
