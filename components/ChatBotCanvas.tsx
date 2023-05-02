@@ -1,12 +1,47 @@
 'use client'
 
-import { OrbitControls, useAnimations, useGLTF} from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import React, { useEffect } from 'react'
+import {
+	Environment,
+	Html,
+	Loader,
+	OrbitControls,
+	SpotLight,
+	useAnimations,
+	useDepthBuffer,
+	useGLTF,
+} from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useContext, useEffect, useRef } from "react";
+import { Vector3 } from "three";
 
-const Torch = () => {
-    return null
-}
+const Torch = ({ vec = new Vector3(), ...props }) => {
+	const light = useRef<THREE.SpotLight>(null);
+	const viewport = useThree((state) => state.viewport);
+	useFrame((state) => {
+		light.current?.target.position.lerp(
+			vec.set(
+				(state.mouse.x * viewport.width) / 2,
+				(state.mouse.y * viewport.height) / 2,
+				0
+			),
+			0.1
+		);
+		light.current?.target.updateMatrixWorld();
+	});
+	return (
+		<SpotLight
+			castShadow
+			ref={light}
+			penumbra={1}
+			distance={10}
+			angle={0.35}
+			attenuation={5}
+			anglePower={4}
+			intensity={3}
+			{...props}
+		/>
+	);
+};
 
 const Head = () => {
     const model = useGLTF("head.glb");
@@ -27,7 +62,8 @@ const Head = () => {
 
 const ChatBotCanvas = () => {
     return (
-        <Canvas style={{ pointerEvents: 'none' }}>
+        // <Canvas style={{ pointerEvents: 'none' }}>
+        <Canvas>
         <OrbitControls
 				enableZoom={false}
 				enableDamping
