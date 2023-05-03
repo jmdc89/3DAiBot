@@ -23,7 +23,7 @@ export const TextToSpeech = () => {
     setIsLoading(true);
 
     synth?.speak(utterance);
-    // setIsPlaying(true);
+    setIsPlaying(true);
     utterance.onend = () => {
       setIsLoading(false);
     };
