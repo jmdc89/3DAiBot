@@ -44,12 +44,20 @@ const Torch = ({ vec = new Vector3(), ...props }) => {
 };
 
 const Head = () => {
+	const { isPlaying, setIsPlaying } = useContext(AppContext);
     const model = useGLTF("head.glb");
     const animations = useAnimations(model.animations, model.scene);
 	const action = animations.actions.Animation;
     useEffect(() => {
-        // action?.play();
-    },[action])
+		if (isPlaying) {
+			action?.play();
+		} else {
+			action?.fadeOut(0.5);
+			setTimeout(() => {
+				action?.stop();
+			}, 500);
+		}
+	}, [isPlaying, action]);
 
     return  (
         <>
