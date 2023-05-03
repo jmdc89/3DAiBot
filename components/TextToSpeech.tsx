@@ -1,7 +1,8 @@
 'use client'
 
+import { AppContext } from "../app/context/IsPlayingContext";
 import { sendTextToOpenAi } from '@/utils/sendTextToOpenAi'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState, useContext } from 'react'
 
 export const TextToSpeech = () => {
 

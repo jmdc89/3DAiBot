@@ -1,5 +1,6 @@
 'use client'
 
+import { AppContext } from "../app/context/IsPlayingContext";
 import {
 	Environment,
 	Html,
